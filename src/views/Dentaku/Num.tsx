@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const Num: React.FC<Props> = ({num}) => {
-  const { input } = useAppSelector(state => state.dentaku.display)
+  const { input } = useAppSelector(state => state.dentaku)
 
   const dispatch = useAppDispatch()
   const inputNumber = () => {

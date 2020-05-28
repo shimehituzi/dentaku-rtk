@@ -4,7 +4,7 @@ import { useAppSelector } from 'state'
 
 
 export const Display: React.FC = () => {
-  const { input } = useAppSelector(state => state.dentaku.display)
+  const { input } = useAppSelector(state => state.dentaku)
 
   return (
     <div>{input}</div>
