@@ -1,7 +1,10 @@
 import React from 'react'
 
-import { Num } from 'views/Dentaku/Num'
-import { Display } from 'views/Dentaku/Display'
+import { Num } from './Num'
+import { Display } from './Display'
+import { Equal } from './Equal'
+import { Plus } from './Plus'
+import { Reset } from './Reset'
 
 
 const Dentaku: React.FC = () => {
@@ -25,6 +28,11 @@ const Dentaku: React.FC = () => {
       </div>
       <div>
         <Num num={0}/>
+        <Plus/>
+        <Equal/>
+      </div>
+      <div>
+        <Reset/>
       </div>
     </React.Fragment>
   )

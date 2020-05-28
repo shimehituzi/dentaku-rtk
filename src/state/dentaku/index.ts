@@ -1,19 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type Display = {
+type Value = {
   input: number
+  buffer: number
   result: number
 }
 
 type Dentaku = {
-  display: Display
+  value: Value
+  mode: "input" | "buffer" | "result"
 }
 
 const initialState: Dentaku = {
-  display: {
+  value: {
     input: 0,
+    buffer: 0,
     result: 0
-  }
+  },
+  mode: "input"
 }
 
 const dentakuSlice = createSlice({
@@ -21,8 +25,20 @@ const dentakuSlice = createSlice({
   initialState,
   reducers: {
     reset: () => { return initialState },
-    setInput: (state: Dentaku, action: PayloadAction<Dentaku['display']['input']>) => {
-      state.display.input = action.payload
+    setInput: (state, action: PayloadAction<Dentaku['value']['input']>) => {
+      state.mode = "input"
+      state.value.input = action.payload
+    },
+    addInput: (state) => {
+      state.mode = "buffer"
+      state.value.buffer += state.value.input
+      state.value.input = 0
+    },
+    calcResult: (state) => {
+      state.mode = "result"
+      state.value.result = state.value.buffer + state.value.input
+      state.value.buffer = 0
+      state.value.input = 0
     }
   }
 })
